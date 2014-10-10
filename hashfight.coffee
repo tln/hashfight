@@ -17,7 +17,7 @@ params = JSON.parse data
 T = new Twit params
 
 # Our text UI
-title = "{center}HASH BATTLE"
+title = "{center}HASHFIGHT v0.1"
 footer = "{center}http://localhost:8080 (coming soon)"
 blessed = require("blessed")
 screen = blessed.screen()
