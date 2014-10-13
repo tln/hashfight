@@ -1,0 +1,37 @@
+<html>
+<head>
+    <meta name="viewport" content="minimal-ui, width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdn.rawgit.com/tln/jquery.one.js/master/jquery.one.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/web.js"></script>
+	<link rel="stylesheet" href="ui.css" type="text/css">
+</head>
+<body class="setting_up">
+
+    <h1 id="headline">Hash#Fight</h1>
+
+    <form id="battle-setup">
+        <input id="entrant1-input" class="entrant-input" type="text" value="lakers">
+        vs
+        <input id="entrant2-input" class="entrant-input" type="text" value="warriors">
+        <button type="submit">Battle!</button>
+    </form>
+
+    <div id="battle-running">
+        <div id="entrant1" class="entrant">
+            <div class="name"></div>
+            <div class="count"></div>
+            <div class="tweets"></div>
+        </div>
+        <div id="entrant2" class="entrant">
+            <div class="name"></div>
+            <div class="count"></div>
+            <div class="tweets"></div>
+        </div>
+    </div>
+
+    <div id="status"></div>
+</body>
+</html>

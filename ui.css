@@ -1,0 +1,92 @@
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web:900);
+
+h1 {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 72px;
+    line-height: 100px;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+}
+
+button, input {
+    font-size: 30px;
+    padding: 8px;
+    border: 1px solid #bac;
+    border-radius: 8px;
+}
+input {
+    width: 15em;
+}
+button {
+    display: block;
+    margin: 0 auto;
+    width: 10em;
+}
+
+.setting_up #battle-setup {
+    display: block;
+}
+.setting_up  #battle-running {
+    display: none;
+}
+.battling #battle-setup {
+    display: none;
+}
+.battling #battle-running {
+    display: block;
+}
+
+.entrant {
+    position: absolute;
+    top: 100px;
+    bottom: 15px;
+    padding: 15px;
+    border: 1px solid #aca;
+    border-radius: 15px;
+    overflow: hidden;
+}
+#entrant1 {
+    left: 0;
+    right: 50%;
+}
+#entrant2 {
+    left: 50%;
+    right: 0;
+}
+
+.entrant .name {
+    float: left;
+    font-size: 20px;
+    padding: 8px;
+}
+.entrant .count {
+    float: left;
+    font-size: 20px;
+    padding: 8px;
+}
+.entrant .tweets {
+    clear: both;
+}
+.entrant .tweets .tweet {
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #cba;
+    background-color: #fed;
+    border-radius: 8px;
+}
+
+
+#status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #aac;
+    color: #440;
+    font-size: 15px;
+    padding: 2px 8px;
+}
+

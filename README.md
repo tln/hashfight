@@ -3,6 +3,26 @@ tln.HASHFIGHT
 
 a.k.a. why Tint should hire me
 
+v0.2
+------
+
+I've completed a pretty straightforward port of the CLI experience to a Web UI. Now, the
+<code>hashfight.coffee</code> can also serve up a little one page app with a similar left-right layout.
+
+The layout needs more polish, but I'm out of time this morning. I chose the headline font to be reminiscent of a boxing poster font, with the "#" NOT slanted.
+
+The client side script uses jQuery (and my own jquery.one.js :) ). The data connection uses sockets.io which has worked well for me in the past.
+
+![Screenshot](./docs/screenshot_web_v0.2.png)
+
+Time spent today: ~3 hours
+
+Time spent so far: ~4.5 hours
+
+Today I learned: absolute positioning is pretty handy for a quick layout
+
+Next I will add: a backend service
+
 v0.1
 ------
 
