@@ -1,7 +1,7 @@
 # Process command line
 yargs = require('yargs')
-    .usage('Usage: $0 [--serve] [--config config.json] [hashtag1 hashtag2]');
-argv = yargs.argv;
+    .usage('Usage: $0 [--serve] [--config config.json] [hashtag1 hashtag2]')
+argv = yargs.argv
 if argv._.length == 0
     cli = false
     web = true
@@ -30,8 +30,8 @@ class Entrant
             track: @hashtag
         )
         .on "tweet", (tweet) =>
-           @count++
-           handler @, tweet
+            @count++
+            handler @, tweet
 
 class Battle
     constructor: (entrant1, entrant2) ->
@@ -45,7 +45,6 @@ class Battle
 if cli
     # Our text UI
     title = "{center}HASHFIGHT v0.1"
-    footer = ""
     blessed = require("blessed")
     screen = blessed.screen()
     border = type: "line"
@@ -53,7 +52,7 @@ if cli
     screen.append boxes[0] = (blessed.box  top: 1, left: 0, width: "50%", bottom: 1, border: border)
     screen.append boxes[1] = (blessed.box  top: 1, left: "50%",  width: "50%", bottom: 1, border: border)
     screen.append blessed.box top: 0, left: 0, right: 0, height: 1, tags: true, content: title, bg: "green"
-    screen.append footerbox = blessed.box bottom: 0, left: 0, right: 0, height: 1, tags: true, content: footer, bg: "green"
+    screen.append footer = blessed.box bottom: 0, left: 0, right: 0, height: 1, tags: true, bg: "green"
     screen.key ['escape', 'q', 'C-c'], (ch, key) -> process.exit(0)
     statusLine = (status) ->
         footerbox.setContent "{center}#{status}"

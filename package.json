@@ -19,5 +19,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "coffeelintConfig": {
+    "indentation": {
+      "value": 4,
+      "level": "error"
+    },
+    "max_line_length": {
+      "value": 120,
+      "level": "warn",
+      "limitComments": true
+    }
+  }
 }
