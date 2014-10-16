@@ -26,12 +26,20 @@ class Entrant
     constructor: (@hashtag, @data) ->
         @count = 0
     stream: (handler) ->
-        T.stream("statuses/filter",
+        @twitStream = T.stream("statuses/filter",
             track: @hashtag
         )
-        .on "tweet", (tweet) =>
+        @twitStream.on "tweet", (tweet) =>
             @count++
             handler @, tweet
+
+        @twitStream.on 'error', (obj) -> console.log('Twitter error:', obj)
+        @twitStream.on 'warning', (obj) -> console.log('Twitter warning:', obj)
+        @twitStream.on 'disconnect', (obj) -> console.log('Twitter disconnect:', obj)
+        @twitStream.on 'limit', (obj) -> console.log('Twitter limit:', obj)
+
+    stop: ->
+        @twitStream.stop()
 
 class Battle
     constructor: (entrant1, entrant2) ->
@@ -40,6 +48,9 @@ class Battle
     start: (handler) ->
         handler e, null for e in @entrants
         e.stream handler for e in @entrants
+    stop: ->
+        e.stop() for e in @entrants
+
 
 # Command line app state
 if cli
@@ -69,8 +80,6 @@ if cli
             box.insertLine 1, tweet.text+"\n"
         screen.render()
 
-
-
 # Our web UI
 if web
     express = require('express')
@@ -79,6 +88,8 @@ if web
     serverInfo = "Listening on http://localhost:8080"
     statusLine(serverInfo)
     io.sockets.on 'connection', (socket) ->
+        battle = null   # Per connection battle
+
         statusLine "#{serverInfo}: Connect!"
 
         socket.on 'battle-setup', (msg) ->
@@ -100,4 +111,8 @@ if web
                     which: entrant.data
                     count: entrant.count
                     tweet: tweet?.text
+        socket.on 'disconnect', ->
+            statusLine "#{serverInfo}: disconnect"
+            if battle
+                battle.stop()
 
