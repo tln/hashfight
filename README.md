@@ -3,6 +3,23 @@ tln.HASHFIGHT
 
 a.k.a. why Tint should hire me
 
+v0.2.1
+------
+
+I finally got a chance to work on Hashfight again. It was time to tackle deployment and plan the backend service.
+
+I'm using Docker to deploy; there was a bit of a rabbithole while my app worked locally but not within Docker due to code in "express" that breaks subtlely on older node versions. That cost me quite a bit of time!!
+
+During all this I noticed sometimes the stream didn't start... once I logged the errors, I saw "Exceeded connection limit for user". That makes my next steps pretty clear: figure out a way around that!
+
+Time spent today: ~1.5 hours
+
+Time spent so far: ~6 hours
+
+Today I learned: how to use the DEBUG env var for node and Twitter's connection limits.
+
+Next I will add: a way around the connection limit
+
 v0.2
 ------
 
