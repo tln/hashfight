@@ -27,6 +27,14 @@ button {
     width: 10em;
 }
 
+#top_battles {
+    font-size: 30px;
+    color: #aaa;
+}
+#top_battles a {
+    display: block;
+}
+
 .setting_up #battle-setup {
     display: block;
 }

@@ -3,6 +3,19 @@ tln.HASHFIGHT
 
 a.k.a. why Tint should hire me
 
+v0.3.0
+------
+
+The final version: now with data storage! The counts and recent tweets are stored in Redis, as are the top battles.
+
+This was a fun project but its time to call it a day, now that I've gone over the 8 hour mark :) Looking forward to seeing what the Tint guys think...
+
+Time spent today (and last night): ~2.5 hours
+
+Time spent so far: ~8.5 hours
+
+Today I learned: Redis!
+
 v0.2.1
 ------
 

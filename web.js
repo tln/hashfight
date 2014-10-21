@@ -31,10 +31,42 @@
       });
       return false;
     });
+    socket.on('setup-info', function(msg) {
+      var $top_battles, b, _fn, _i, _len, _ref;
+      $top_battles = $("#top_battles");
+      debugger;
+      _ref = msg.top_battles;
+      _fn = function(b) {
+        var $e;
+        $e = $("<a>" + b[0] + " vs " + b[1] + "</a>");
+        $e.click(function() {
+          $entrant1input.val(b[0]);
+          $entrant2input.val(b[1]);
+          return $form.submit();
+        });
+        return $top_battles.append($e);
+      };
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        b = _ref[_i];
+        _fn(b);
+      }
+      return $top_battles.show();
+    });
     socket.on('battle-start', function(msg) {
+      var $newTweet, key, tweet, _i, _j, _len, _len1, _ref, _ref1;
       $status.html("Battle started");
-      entrants.entrant1.$name.html(msg.entrant1);
-      entrants.entrant2.$name.html(msg.entrant2);
+      _ref = ['entrant1', 'entrant2'];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        key = _ref[_i];
+        entrants[key].$name.html(msg[key].hashtag);
+        entrants[key].$count.html(msg[key].count);
+        _ref1 = msg[key].recent || [];
+        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+          tweet = _ref1[_j];
+          $newTweet = $('<div class="tweet"></div>');
+          entrants[key].$tweets.append($newTweet.text(tweet));
+        }
+      }
       return $body.attr("class", "battling");
     });
     return socket.on('tweet', function(msg) {

@@ -27,12 +27,32 @@ $ ->
             entrant2: $entrant2input.val()
         return false
 
+    socket.on 'setup-info', (msg) ->
+        $top_battles = $("#top_battles")
+        debugger;
+        for b in msg.top_battles
+            do (b) ->
+                $e = $("<a>#{b[0]} vs #{b[1]}</a>")
+                $e.click ->
+                    $entrant1input.val(b[0])
+                    $entrant2input.val(b[1])
+                    $form.submit()
+                $top_battles.append $e
+        $top_battles.show()
+
     socket.on 'battle-start', (msg) ->
         # In response to battle-setup
         $status.html("Battle started")
-        entrants.entrant1.$name.html msg.entrant1
-        entrants.entrant2.$name.html msg.entrant2
+        for key in ['entrant1', 'entrant2']
+            entrants[key].$name.html msg[key].hashtag
+            entrants[key].$count.html msg[key].count
+            # Add tweets -- animate?
+            for tweet in msg[key].recent || []
+                $newTweet = $ '<div class="tweet"></div>'
+                entrants[key].$tweets.append $newTweet.text(tweet)
+            #entrants[key].$name.html msg[key].hashtag
         $body.attr "class", "battling"
+
 
     socket.on 'tweet', (msg) ->
         # Whenever we get a tweet, update the count and add a tweet div
